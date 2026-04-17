@@ -1,0 +1,61 @@
+@model EFMDS.Web.Models.Specialty
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="card surface-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="mb-4">
+                    <span
+                        class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">Update
+                        specialty</span>
+                        <h1 class="h3 fw-bold mb-2">Edit Specialty</h1>
+                        <p class="text-body-secondary mb-0">Update the selected specialty and save the changes.</p>
+                    </div>
+
+                    <form method="post" action="/specialties/edit/@Model.Id" class="row g-3 needs-validation" novalidate>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <div class="col-md-6">
+                            <label for="NameAr" class="form-label">Name Ar</label>
+                            <input type="text" class="form-control" id="NameAr" name="NameAr" value="@Model.NameAr" required
+                                   minlength="2" maxlength="100" />
+                            <div class="invalid-feedback">Name Ar is required and must be at least 2 characters.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="NameEn" class="form-label">Name En</label>
+                            <input type="text" class="form-control" id="NameEn" name="NameEn" value="@Model.NameEn" required
+                                   minlength="2" maxlength="100" />
+                            <div class="invalid-feedback">Name En is required and must be at least 2 characters.</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="IconUrl" class="form-label">Icon Url</label>
+                            <input type="url" class="form-control" id="IconUrl" name="IconUrl" value="@Model.IconUrl"
+                                   placeholder="https://example.com/icon.png" />
+                            <div class="form-text">Optional, but if provided it must be a valid URL.</div>
+                            <div class="invalid-feedback">Please enter a valid URL.</div>
+                        </div>
+                        <div class="col-12 d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a href="/specialties" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const form = document.querySelector('.needs-validation');
+            if (!form) return;
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        })();
+    </script>

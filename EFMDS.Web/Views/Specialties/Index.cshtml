@@ -1,0 +1,66 @@
+@model List<EFMDS.Web.Models.Specialty>
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <span
+            class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">Specialty
+            directory</span>
+            <h1 class="h3 fw-bold mb-1">Specialties</h1>
+            <p class="text-body-secondary mb-0">A clean table for browsing, editing, and managing specialties.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="/specialties/create">Add Specialty</a>
+    </div>
+
+    <div class="card surface-card">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead style="background: rgba(0, 184, 169, 0.08);">
+                        <tr>
+                            <th class="ps-4">ID</th>
+                            <th>Name Ar</th>
+                            <th>Name En</th>
+                            <th>Icon</th>
+                            <th class="text-end pe-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            foreach (var specialty in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-semibold text-vezeeta">@specialty.Id</td>
+                                    <td>@specialty.NameAr</td>
+                                    <td>@specialty.NameEn</td>
+                                    <td>
+                                        @if (!string.IsNullOrWhiteSpace(specialty.IconUrl))
+                                        {
+                                            <a href="@specialty.IconUrl" target="_blank" rel="noopener noreferrer">View icon</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-body-secondary">N/A</span>
+                                        }
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Specialty actions">
+                                            <a class="btn btn-outline-secondary" href="/specialties/@specialty.Id">Details</a>
+                                            <a class="btn btn-outline-primary" href="/specialties/edit/@specialty.Id">Edit</a>
+                                            <a class="btn btn-outline-danger" href="/specialties/delete/@specialty.Id">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-body-secondary">No specialties found yet.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
