@@ -11,6 +11,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SqlHelper>();
 builder.Services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
 builder.Services.AddScoped<ISpecialtyService, SpecialtyService>();
+builder.Services.AddScoped<IDistrictRepository, DistrictRepository>();
+builder.Services.AddScoped<IDistrictService, DistrictService>();
+builder.Services.AddScoped<IGovernorateRepository, GovernorateRepository>();
+builder.Services.AddScoped<IGovernorateService, GovernorateService>();
+
 
 var app = builder.Build();
 

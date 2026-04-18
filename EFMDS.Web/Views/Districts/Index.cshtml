@@ -1,0 +1,72 @@
+@model List<EFMDS.Web.Models.District>
+
+@{
+    var governorates = ViewBag.Governorates as IEnumerable<EFMDS.Web.Models.Governorate> ??
+        Enumerable.Empty<EFMDS.Web.Models.Governorate>();
+    var governorateLookup = governorates.ToDictionary(g => g.Id, g => g);
+}
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <span
+        class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">Districts</span>
+        <h1 class="h3 fw-bold mb-1">Districts</h1>
+        <p class="text-body-secondary mb-0">Manage districts and connect each one to a governorate.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/districts/create">Add District</a>
+</div>
+
+<div class="card surface-card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead style="background: rgba(0, 184, 169, 0.08);">
+                    <tr>
+                        <th class="ps-4">ID</th>
+                        <th>Name Ar</th>
+                        <th>Name En</th>
+                        <th>Governorate</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        foreach (var district in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-semibold text-vezeeta">@district.Id</td>
+                                <td>@district.NameAr</td>
+                                <td>@district.NameEn</td>
+                                <td>
+                                    @if (governorateLookup.TryGetValue(district.GovernorateId, out var governorate))
+                                    {
+                                        <div class="fw-semibold">@governorate.NameAr</div>
+                                        <div class="text-body-secondary small">@governorate.NameEn</div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-body-secondary">Unknown governorate</span>
+                                    }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="District actions">
+                                        <a class="btn btn-outline-secondary" href="/districts/@district.Id">Details</a>
+                                        <a class="btn btn-outline-primary" href="/districts/edit/@district.Id">Edit</a>
+                                        <a class="btn btn-outline-danger" href="/districts/delete/@district.Id">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-body-secondary">No districts found yet.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

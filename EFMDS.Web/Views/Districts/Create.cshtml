@@ -1,0 +1,72 @@
+@model EFMDS.Web.Models.District
+
+@{
+    var governorates = ViewBag.Governorates as IEnumerable<EFMDS.Web.Models.Governorate> ??
+Enumerable.Empty<EFMDS.Web.Models.Governorate>();
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="card surface-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="mb-4">
+                    <span
+                        class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">New
+                        district</span>
+                        <h1 class="h3 fw-bold mb-2">Create District</h1>
+                        <p class="text-body-secondary mb-0">Add a district and link it to a governorate.</p>
+                    </div>
+
+                    <form method="post" action="/districts/create" class="row g-3 needs-validation" novalidate>
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-6">
+                            <label for="NameAr" class="form-label">Name Ar</label>
+                            <input type="text" class="form-control" id="NameAr" name="NameAr" value="@Model?.NameAr"
+                                   required minlength="2" maxlength="100" placeholder="مثال: مدينة نصر" />
+                            <div class="invalid-feedback">Name Ar is required and must be at least 2 characters.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="NameEn" class="form-label">Name En</label>
+                            <input type="text" class="form-control" id="NameEn" name="NameEn" value="@Model?.NameEn"
+                                   required minlength="2" maxlength="100" placeholder="Example: Nasr City" />
+                            <div class="invalid-feedback">Name En is required and must be at least 2 characters.</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="GovernorateId" class="form-label">Governorate</label>
+                            <select class="form-select" id="GovernorateId" name="GovernorateId" required>
+                                <option value="">Select governorate</option>
+                                @foreach (var governorate in governorates)
+                                {
+                                    <option value="@governorate.Id" @(Model != null && Model.GovernorateId == governorate.Id ?
+                                                                                                                     "selected" : "")>
+                                        @governorate.NameAr - @governorate.NameEn
+                                    </option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">Governorate is required.</div>
+                        </div>
+                        <div class="col-12 d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="/districts" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const form = document.querySelector('.needs-validation');
+            if (!form) return;
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        })();
+    </script>

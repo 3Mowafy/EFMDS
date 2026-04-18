@@ -1,0 +1,65 @@
+@model EFMDS.Web.Models.District
+
+@{
+    var governorates = ViewBag.Governorates as IEnumerable<EFMDS.Web.Models.Governorate> ??
+        Enumerable.Empty<EFMDS.Web.Models.Governorate>();
+    var governorate = governorates.FirstOrDefault(g => g.Id == Model.GovernorateId);
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="card surface-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-3 mb-4">
+                    <div>
+                        <span
+                            class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">District
+                            details</span>
+                            <h1 class="h3 fw-bold mb-0">@Model.NameEn</h1>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="District detail actions">
+                            <a class="btn btn-outline-primary" href="/districts/edit/@Model.Id">Edit</a>
+                            <a class="btn btn-outline-danger" href="/districts/delete/@Model.Id">Delete</a>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-4 bg-light border">
+                                <div class="text-body-secondary small">ID</div>
+                                <div class="fw-semibold">@Model.Id</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-4 bg-light border">
+                                <div class="text-body-secondary small">Governorate</div>
+                                <div class="fw-semibold">
+                                    @if (governorate != null)
+                                    {
+                                        @governorate.NameAr
+                                        <span class="text-body-secondary small d-block">@governorate.NameEn</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-body-secondary">Unknown governorate</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-4 bg-light border">
+                                <div class="text-body-secondary small">Name Ar</div>
+                                <div class="fw-semibold">@Model.NameAr</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-4 bg-light border">
+                                <div class="text-body-secondary small">Name En</div>
+                                <div class="fw-semibold">@Model.NameEn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

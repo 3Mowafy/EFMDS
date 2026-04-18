@@ -1,0 +1,53 @@
+@model EFMDS.Web.Models.District
+
+@{
+    var governorates = ViewBag.Governorates as IEnumerable<EFMDS.Web.Models.Governorate> ??
+        Enumerable.Empty<EFMDS.Web.Models.Governorate>();
+    var governorate = governorates.FirstOrDefault(g => g.Id == Model.GovernorateId);
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="card surface-card border-danger-subtle">
+            <div class="card-body p-4 p-md-5">
+                <span class="badge rounded-pill text-bg-danger mb-3">Delete confirmation</span>
+                <h1 class="h3 fw-bold mb-3">Remove District</h1>
+                <p class="text-body-secondary mb-4">This action will delete the district permanently.</p>
+
+                <div class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-4 bg-light border"><strong>ID:</strong> @Model.Id</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-4 bg-light border">
+                                <strong>Governorate:</strong>
+                                @if (governorate != null)
+                                {
+                                    <span>@governorate.NameAr</span>
+                                    <span class="text-body-secondary small d-block">@governorate.NameEn</span>
+                                }
+                                else
+                                {
+                                    <span>Unknown governorate</span>
+                                }
+                            </div>
+                        </div>
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-4 bg-light border"><strong>Name Ar:</strong> @Model.NameAr</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-4 bg-light border"><strong>Name En:</strong> @Model.NameEn</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="post" action="/districts/delete/@Model.Id" class="d-flex gap-2">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <a href="/districts" class="btn btn-outline-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
