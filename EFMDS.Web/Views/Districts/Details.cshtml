@@ -18,8 +18,10 @@
                             <h1 class="h3 fw-bold mb-0">@Model.NameEn</h1>
                         </div>
                         <div class="btn-group" role="group" aria-label="District detail actions">
-                            <a class="btn btn-outline-primary" href="/districts/edit/@Model.Id">Edit</a>
-                            <a class="btn btn-outline-danger" href="/districts/delete/@Model.Id">Delete</a>
+                            <a class="btn btn-outline-primary" asp-controller="Districts" asp-action="Edit"
+                               asp-route-id="@Model.Id">Edit</a>
+                            <a class="btn btn-outline-danger" asp-controller="Districts" asp-action="Delete"
+                               asp-route-id="@Model.Id">Delete</a>
                         </div>
                     </div>
 

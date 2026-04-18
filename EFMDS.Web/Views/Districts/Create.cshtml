@@ -17,7 +17,8 @@ Enumerable.Empty<EFMDS.Web.Models.Governorate>();
                         <p class="text-body-secondary mb-0">Add a district and link it to a governorate.</p>
                     </div>
 
-                    <form method="post" action="/districts/create" class="row g-3 needs-validation" novalidate>
+                    <form asp-controller="Districts" asp-action="Create" method="post" asp-antiforgery="false"
+                          class="row g-3 needs-validation" novalidate>
                         @Html.AntiForgeryToken()
                         <div class="col-md-6">
                             <label for="NameAr" class="form-label">Name Ar</label>
@@ -37,17 +38,25 @@ Enumerable.Empty<EFMDS.Web.Models.Governorate>();
                                 <option value="">Select governorate</option>
                                 @foreach (var governorate in governorates)
                                 {
-                                    <option value="@governorate.Id" @(Model != null && Model.GovernorateId == governorate.Id ?
-                                                                                                                     "selected" : "")>
-                                        @governorate.NameAr - @governorate.NameEn
-                                    </option>
+                                    if (Model != null && Model.GovernorateId == governorate.Id)
+                                    {
+                                        <option value="@governorate.Id" selected>
+                                            @governorate.NameAr - @governorate.NameEn
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@governorate.Id">
+                                            @governorate.NameAr - @governorate.NameEn
+                                        </option>
+                                    }
                                 }
                             </select>
                             <div class="invalid-feedback">Governorate is required.</div>
                         </div>
                         <div class="col-12 d-flex gap-2">
                             <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="/districts" class="btn btn-outline-secondary">Cancel</a>
+                            <a asp-controller="Districts" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

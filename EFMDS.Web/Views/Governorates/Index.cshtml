@@ -7,7 +7,7 @@
         <h1 class="h3 fw-bold mb-1">Governorates</h1>
         <p class="text-body-secondary mb-0">Manage the governorates used by the rest of the site.</p>
     </div>
-    <a class="btn btn-primary btn-lg" href="/governorates/create">Add Governorate</a>
+    <a class="btn btn-primary btn-lg" asp-controller="Governorates" asp-action="Create">Add Governorate</a>
 </div>
 
 <div class="card surface-card">
@@ -33,9 +33,12 @@
                                 <td>@governorate.NameEn</td>
                                 <td class="text-end pe-4">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Governorate actions">
-                                        <a class="btn btn-outline-secondary" href="/governorates/@governorate.Id">Details</a>
-                                        <a class="btn btn-outline-primary" href="/governorates/edit/@governorate.Id">Edit</a>
-                                        <a class="btn btn-outline-danger" href="/governorates/delete/@governorate.Id">Delete</a>
+                                        <a class="btn btn-outline-secondary" asp-controller="Governorates" asp-action="Details"
+                                           asp-route-id="@governorate.Id">Details</a>
+                                        <a class="btn btn-outline-primary" asp-controller="Governorates" asp-action="Edit"
+                                           asp-route-id="@governorate.Id">Edit</a>
+                                        <a class="btn btn-outline-danger" asp-controller="Governorates" asp-action="Delete"
+                                           asp-route-id="@governorate.Id">Delete</a>
                                     </div>
                                 </td>
                             </tr>

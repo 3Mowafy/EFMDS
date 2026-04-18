@@ -12,7 +12,8 @@
                         <p class="text-body-secondary mb-0">Use the fields below to add a new specialty.</p>
                     </div>
 
-                    <form method="post" action="/specialties/create" class="row g-3 needs-validation" novalidate>
+                    <form asp-controller="Specialties" asp-action="Create" method="post" asp-antiforgery="false"
+                          class="row g-3 needs-validation" novalidate>
                         @Html.AntiForgeryToken()
                         <div class="col-md-6">
                             <label for="NameAr" class="form-label">Name Ar</label>
@@ -35,7 +36,7 @@
                         </div>
                         <div class="col-12 d-flex gap-2">
                             <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="/specialties" class="btn btn-outline-secondary">Cancel</a>
+                            <a asp-controller="Specialties" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

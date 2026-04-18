@@ -8,7 +8,7 @@
             <h1 class="h3 fw-bold mb-1">Specialties</h1>
             <p class="text-body-secondary mb-0">A clean table for browsing, editing, and managing specialties.</p>
         </div>
-        <a class="btn btn-primary btn-lg" href="/specialties/create">Add Specialty</a>
+        <a class="btn btn-primary btn-lg" asp-controller="Specialties" asp-action="Create">Add Specialty</a>
     </div>
 
     <div class="card surface-card">
@@ -45,9 +45,12 @@
                                     </td>
                                     <td class="text-end pe-4">
                                         <div class="btn-group btn-group-sm" role="group" aria-label="Specialty actions">
-                                            <a class="btn btn-outline-secondary" href="/specialties/@specialty.Id">Details</a>
-                                            <a class="btn btn-outline-primary" href="/specialties/edit/@specialty.Id">Edit</a>
-                                            <a class="btn btn-outline-danger" href="/specialties/delete/@specialty.Id">Delete</a>
+                                            <a class="btn btn-outline-secondary" asp-controller="Specialties" asp-action="Details"
+                                               asp-route-id="@specialty.Id">Details</a>
+                                            <a class="btn btn-outline-primary" asp-controller="Specialties" asp-action="Edit"
+                                               asp-route-id="@specialty.Id">Edit</a>
+                                            <a class="btn btn-outline-danger" asp-controller="Specialties" asp-action="Delete"
+                                               asp-route-id="@specialty.Id">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

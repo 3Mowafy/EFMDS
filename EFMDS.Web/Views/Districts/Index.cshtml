@@ -13,7 +13,7 @@
         <h1 class="h3 fw-bold mb-1">Districts</h1>
         <p class="text-body-secondary mb-0">Manage districts and connect each one to a governorate.</p>
     </div>
-    <a class="btn btn-primary btn-lg" href="/districts/create">Add District</a>
+    <a class="btn btn-primary btn-lg" asp-controller="Districts" asp-action="Create">Add District</a>
 </div>
 
 <div class="card surface-card">
@@ -51,9 +51,12 @@
                                 </td>
                                 <td class="text-end pe-4">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="District actions">
-                                        <a class="btn btn-outline-secondary" href="/districts/@district.Id">Details</a>
-                                        <a class="btn btn-outline-primary" href="/districts/edit/@district.Id">Edit</a>
-                                        <a class="btn btn-outline-danger" href="/districts/delete/@district.Id">Delete</a>
+                                        <a class="btn btn-outline-secondary" asp-controller="Districts" asp-action="Details"
+                                           asp-route-id="@district.Id">Details</a>
+                                        <a class="btn btn-outline-primary" asp-controller="Districts" asp-action="Edit"
+                                           asp-route-id="@district.Id">Edit</a>
+                                        <a class="btn btn-outline-danger" asp-controller="Districts" asp-action="Delete"
+                                           asp-route-id="@district.Id">Delete</a>
                                     </div>
                                 </td>
                             </tr>

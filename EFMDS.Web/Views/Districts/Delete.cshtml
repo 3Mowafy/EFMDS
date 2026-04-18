@@ -42,10 +42,10 @@
                         </div>
                     </div>
 
-                    <form method="post" action="/districts/delete/@Model.Id" class="d-flex gap-2">
+                    <form asp-controller="Districts" asp-action="Delete" asp-route-id="@Model.Id" method="post" asp-antiforgery="false" class="d-flex gap-2">
                         @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-danger">Delete</button>
-                        <a href="/districts" class="btn btn-outline-secondary">Cancel</a>
+                        <a asp-controller="Districts" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
