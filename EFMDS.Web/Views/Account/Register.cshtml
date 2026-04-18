@@ -1,0 +1,73 @@
+@model EFMDS.Web.ViewModels.RegisterViewModel
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8 col-xl-7">
+        <div class="card surface-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="mb-4">
+                    <span class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">Create account</span>
+                    <h1 class="h3 fw-bold mb-2">إنشاء حساب</h1>
+                    <p class="text-body-secondary mb-0">سجّل مستخدم جديد عشان تدخل على النظام بعدين.</p>
+                </div>
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "row g-3 needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger mb-0" })
+
+                    <div class="col-md-6">
+                        <label for="FullName" class="form-label">الاسم الكامل</label>
+                        <input type="text" class="form-control" id="FullName" name="FullName" value="@Model?.FullName"
+                               required minlength="3" maxlength="150" />
+                        <div class="invalid-feedback">الاسم الكامل مطلوب.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="Email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="Email" name="Email" value="@Model?.Email"
+                               required placeholder="name@example.com" />
+                        <div class="invalid-feedback">البريد الإلكتروني مطلوب ويجب أن يكون صحيحًا.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="Password" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="Password" name="Password" required minlength="6" />
+                        <div class="invalid-feedback">كلمة المرور مطلوبة ولا تقل عن 6 أحرف.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="ConfirmPassword" class="form-label">تأكيد كلمة المرور</label>
+                        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required minlength="6" />
+                        <div class="invalid-feedback">تأكيد كلمة المرور مطلوب.</div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="Phone" class="form-label">رقم الهاتف</label>
+                        <input type="tel" class="form-control" id="Phone" name="Phone" value="@Model?.Phone" placeholder="01xxxxxxxxx" />
+                    </div>
+
+                    <div class="col-12 d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary px-4">تسجيل</button>
+                        <a class="btn btn-outline-secondary px-4" href="/Account/Login">لدي حساب بالفعل</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const form = document.querySelector('.needs-validation');
+        if (!form) return;
+
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        }, false);
+    })();
+</script>

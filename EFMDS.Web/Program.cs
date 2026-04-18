@@ -6,6 +6,18 @@ using EFMDS.Web.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+        options.AccessDeniedPath = "/Account/Login";
+        options.ExpireTimeSpan = TimeSpan.FromDays(7);
+    });
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<SqlHelper>();
@@ -23,6 +35,7 @@ app.UseStatusCodePagesWithReExecute("/Error/NotFoundPage");
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
 

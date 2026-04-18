@@ -1,0 +1,62 @@
+@model EFMDS.Web.ViewModels.LoginViewModel
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-7 col-xl-6">
+        <div class="card surface-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="mb-4">
+                    <span class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-2">Account access</span>
+                    <h1 class="h3 fw-bold mb-2">تسجيل الدخول</h1>
+                    <p class="text-body-secondary mb-0">ادخل بياناتك للوصول إلى لوحة المشروع والصفحات المحمية.</p>
+                </div>
+
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "row g-3 needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger mb-0" })
+
+                    <div class="col-12">
+                        <label for="Email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="Email" name="Email" value="@Model?.Email"
+                               required placeholder="name@example.com" />
+                        <div class="invalid-feedback">البريد الإلكتروني مطلوب ويجب أن يكون صحيحًا.</div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="Password" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="Password" name="Password" required minlength="6" />
+                        <div class="invalid-feedback">كلمة المرور مطلوبة ولا تقل عن 6 أحرف.</div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="RememberMe" name="RememberMe" value="true" @(Model?.RememberMe == true ? "checked" : "") />
+                            <label class="form-check-label" for="RememberMe">تذكرني</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary px-4">دخول</button>
+                        <a class="btn btn-outline-success px-4" href="/Account/Register">إنشاء حساب جديد</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const form = document.querySelector('.needs-validation');
+        if (!form) return;
+
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        }, false);
+    })();
+</script>

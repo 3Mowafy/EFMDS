@@ -25,6 +25,22 @@
                     <a class="nav-link fw-semibold" href="/districts">Districts</a>
                 </li>
             </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <span class="text-white-50 small d-none d-lg-inline">مرحبًا، @User.Identity.Name</span>
+                    <form method="post" action="/Account/Logout" class="m-0">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-light btn-sm fw-semibold">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <a class="btn btn-light btn-sm fw-semibold" href="/Account/Login">Login</a>
+                    <a class="btn btn-outline-light btn-sm fw-semibold" href="/Account/Register">Register</a>
+                }
+            </div>
         </div>
     </div>
 </nav>

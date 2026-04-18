@@ -16,6 +16,21 @@
                             <a class="btn btn-outline-success btn-lg px-4" href="/governorates">Governorates</a>
                             <a class="btn btn-outline-primary btn-lg px-4" href="/districts">Districts</a>
                         </div>
+                        <div class="mt-3 d-flex flex-wrap gap-2">
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <span class="badge rounded-pill text-bg-light border px-3 py-2">Logged in as @User.Identity.Name</span>
+                                <form method="post" action="/Account/Logout" class="d-inline m-0">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Logout</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-dark btn-sm" href="/Account/Login">Login</a>
+                                <a class="btn btn-outline-dark btn-sm" href="/Account/Register">Register</a>
+                            }
+                        </div>
                         <div class="mt-4 d-flex flex-wrap gap-2">
                             <span class="badge rounded-pill text-bg-light border px-3 py-2">RTL ready</span>
                             <span class="badge rounded-pill text-bg-light border px-3 py-2">Bootstrap views</span>
@@ -60,6 +75,39 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-11">
+                <div class="card surface-card border-success-subtle">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-7">
+                                <span class="badge rounded-pill text-bg-success-subtle text-vezeeta border border-success-subtle px-3 py-2 mb-3">Account access</span>
+                                <h2 class="h3 fw-bold mb-2">صفحات تسجيل الدخول جاهزة</h2>
+                                <p class="text-body-secondary mb-0">
+                                    لو عايز تفتح الصفحات الخاصة بالحساب مباشرة، استخدم الأزرار دي من هنا أو من النافبار.
+                                </p>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="d-grid gap-2">
+                                    @if (User.Identity?.IsAuthenticated == true)
+                                    {
+                                        <div class="alert alert-success mb-0">أنت داخل الآن باسم @User.Identity.Name</div>
+                                        <form method="post" action="/Account/Logout" class="m-0">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-danger w-100">Logout</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary btn-lg" href="/Account/Login">Login</a>
+                                        <a class="btn btn-outline-success btn-lg" href="/Account/Register">Register</a>
+                                    }
                                 </div>
                             </div>
                         </div>
