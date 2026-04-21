@@ -1,0 +1,93 @@
+@{
+    var selectedSpecialty = ViewData["SelectedSpecialty"] as string;
+}
+<div class="card shadow-sm border-0 rounded-4 filter-sidebar">
+    <div class="card-body">
+        <h5 class="fw-bold mb-4 d-flex align-items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-funnel-fill text-primary" viewBox="0 0 16 16">
+                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+            </svg>
+            تصفية النتائج
+        </h5>
+
+        <form id="filter-form">
+            <!-- Specialty Filter -->
+            <div class="mb-4">
+                <h6 class="fw-semibold text-secondary mb-3">التخصص</h6>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="specAll" value="" @(string.IsNullOrEmpty(selectedSpecialty) ? "checked" : "")>
+                    <label class="form-check-label" for="specAll">الكل</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec1" value="أسنان" @(selectedSpecialty == "أسنان" ? "checked" : "")>
+                    <label class="form-check-label" for="spec1">أسنان</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec2" value="أطفال" @(selectedSpecialty == "أطفال" ? "checked" : "")>
+                    <label class="form-check-label" for="spec2">أطفال</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec3" value="باطنة" @(selectedSpecialty == "باطنة" ? "checked" : "")>
+                    <label class="form-check-label" for="spec3">باطنة</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec4" value="جلدية" @(selectedSpecialty == "جلدية" ? "checked" : "")>
+                    <label class="form-check-label" for="spec4">جلدية</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec5" value="نساء وتوليد" @(selectedSpecialty == "نساء وتوليد" ? "checked" : "")>
+                    <label class="form-check-label" for="spec5">نساء وتوليد</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec6" value="عيون" @(selectedSpecialty == "عيون" ? "checked" : "")>
+                    <label class="form-check-label" for="spec6">عيون</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="specialty" id="spec7" value="تغذية" @(selectedSpecialty == "تغذية" ? "checked" : "")>
+                    <label class="form-check-label" for="spec7">تغذية</label>
+                </div>
+            </div>
+            
+            <hr class="my-3 text-muted">
+
+            <!-- Title Filter -->
+            <div class="mb-4">
+                <h6 class="fw-semibold text-secondary mb-3">اللقب</h6>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="title" id="titleAll" value="" checked>
+                    <label class="form-check-label" for="titleAll">الكل</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="title" id="titleProf" value="أستاذ">
+                    <label class="form-check-label" for="titleProf">أستاذ</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="title" id="titleLecturer" value="مدرس">
+                    <label class="form-check-label" for="titleLecturer">مدرس</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="title" id="titleConsultant" value="استشاري">
+                    <label class="form-check-label" for="titleConsultant">استشاري</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input filter-radio" type="radio" name="title" id="titleSpecialist" value="أخصائي">
+                    <label class="form-check-label" for="titleSpecialist">أخصائي</label>
+                </div>
+            </div>
+
+            <hr class="my-3 text-muted">
+
+            <!-- Price Filter (UI only for mockup) -->
+            <div class="mb-4">
+                <h6 class="fw-semibold text-secondary mb-3">سعر الكشف</h6>
+                <select class="form-select border-0 bg-light rounded-3 shadow-sm">
+                    <option value="">أي سعر</option>
+                    <option value="1">أقل من 100 ج.م</option>
+                    <option value="2">100 - 300 ج.م</option>
+                    <option value="3">أكثر من 300 ج.م</option>
+                </select>
+            </div>
+            
+        </form>
+    </div>
+</div>

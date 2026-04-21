@@ -1,0 +1,99 @@
+@model EFMDS.Web.ViewModels.DoctorViewModel
+
+<div class="card shadow-sm border-0 rounded-4 mb-4 doctor-card overflow-hidden">
+    <div class="card-body p-4">
+        <div class="row align-items-center">
+            <!-- Doctor Info -->
+            <div class="col-md-7 border-md-end text-end pb-3 pb-md-0">
+                <div class="d-flex gap-4 align-items-start">
+                    <img src="@Model.ImageUrl" alt="@Model.Name" class="rounded-circle object-fit-cover shadow-sm border" width="90" height="90">
+                    <div>
+                        <h4 class="fw-bold text-primary mb-1 d-flex align-items-center gap-2">
+                            <a asp-controller="Home" asp-action="DoctorDetails" asp-route-id="@Model.Id" class="text-decoration-none text-primary hover-lift d-inline-block">@Model.Name</a>
+                            <span class="badge bg-success bg-opacity-10 text-success fs-6 rounded-pill px-2 py-1 border border-success-subtle">
+                                <i class="bi bi-check-circle-fill me-1"></i> موثق
+                            </span>
+                        </h4>
+                        <p class="text-secondary mb-2 fs-5">@Model.Specialty</p>
+
+                        <!-- Rating -->
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <div class="stars text-warning fs-5">
+                                @for(int i = 1; i <= 5; i++)
+                                {
+                                    if(i <= Math.Round(Model.Rating)) {
+                                        <span>★</span>
+                                    } else {
+                                        <span class="text-muted opacity-25">★</span>
+                                    }
+                                }
+                            </div>
+                            <span class="fw-bold fs-5">@Model.Rating</span>
+                            <span class="text-muted small">(@Model.ReviewsCount تقييم)</span>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="d-flex flex-column gap-2 text-muted small mt-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-primary" viewBox="0 0 16 16">
+                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                </svg>
+                                <span>@Model.Location</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack text-success" viewBox="0 0 16 16">
+                                    <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                                    <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
+                                </svg>
+                                <span>سعر الكشف: <strong class="text-dark">@Model.Price ج.م</strong></span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history text-warning" viewBox="0 0 16 16">
+                                    <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                                    <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                                    <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                                <span>مدة الانتظار: <strong class="text-dark">@Model.WaitTime</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Section -->
+            <div class="col-md-5 pt-3 pt-md-0 d-flex flex-column justify-content-between h-100">
+                <div>
+                    <h6 class="fw-bold text-center mb-3">احجز موعداً</h6>
+                    
+                    @if(Model.AvailableAppointments != null && Model.AvailableAppointments.Any())
+                    {
+                        <div class="row g-2 mb-3">
+                            @foreach(var apt in Model.AvailableAppointments.Take(4))
+                            {
+                                <div class="col-6">
+                                    <button class="btn btn-outline-primary btn-sm w-100 rounded-3 time-slot-btn py-2 px-2 fw-semibold">
+                                        @apt
+                                    </button>
+                                </div>
+                            }
+                            @if(Model.AvailableAppointments.Count > 3)
+                            {
+                                <div class="col-6">
+                                    <button class="btn btn-light btn-sm w-100 rounded-3 text-primary fw-bold py-2 border">المزيد</button>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary text-center small py-2">لا توجد مواعيد متاحة قريباً</div>
+                    }
+                </div>
+                
+                <button class="btn btn-primary btn-lg w-100 rounded-pill fw-bold shadow-sm mt-2 hover-lift">
+                    احجز الآن <i class="bi bi-chevron-left ms-2 small"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

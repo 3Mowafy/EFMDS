@@ -1,3 +1,5 @@
+@model EFMDS.Web.ViewModels.HomeViewModel
+
 <div class="row justify-content-center g-4">
     <div class="col-12 col-xl-11">
         <div class="card surface-card overflow-hidden">
@@ -178,3 +180,141 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+<!-- SPECIALTIES SECTION -->
+<div class="row justify-content-center g-4 my-5">
+    <div class="col-12 col-xl-11">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h2 class="fw-bold mb-0 text-primary">التخصصات الطبية</h2>
+            <a href="#" class="btn btn-outline-primary rounded-pill px-4 fw-semibold">عرض الكل</a>
+        </div>
+        
+        <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-7 justify-content-center">
+            
+            <!-- Specialty 1 -->
+            <div class="col">
+                <a href="/Listing?specialty=أسنان" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bandaid-fill" viewBox="0 0 16 16">
+                                <path d="m2.68 7.676 6.49-6.504a4 4 0 0 1 5.66 5.653l-1.477 1.529-5.006 5.006-1.523 1.472a4 4 0 0 1-5.653-5.66l.001-.002 1.505-1.492.001-.002Zm5.71-2.858a.5.5 0 1 0-.708-.707.5.5 0 0 0 .707.707ZM6.974 6.939a.5.5 0 1 0-.707-.707.5.5 0 0 0 .707.707M5.56 8.354a.5.5 0 1 0-.707-.708.5.5 0 0 0 .707.708m2.828 2.828a.5.5 0 1 0-.707-.707.5.5 0 0 0 .707.707m1.414-2.121a.5.5 0 1 0-.707.707.5.5 0 0 0 .707-.707m1.414-.707a.5.5 0 1 0-.706-.708.5.5 0 0 0 .707.708"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">أسنان</h6>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Specialty 2 -->
+            <div class="col">
+                <a href="/Listing?specialty=أطفال" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-emoji-smile-fill" viewBox="0 0 16 16">
+                              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">أطفال</h6>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Specialty 3 -->
+            <div class="col">
+                <a href="/Listing?specialty=باطنة" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+                              <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+                              <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">باطنة</h6>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Specialty 4 -->
+            <div class="col">
+                <a href="/Listing?specialty=جلدية" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+                              <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c-.75 2.503-2.254 4.176-3.568 5.638C3.122 7.096 2 8.345 2 10a6 6 0 0 0 6 6zM6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13z"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">جلدية</h6>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Specialty 5 -->
+            <div class="col">
+                <a href="/Listing?specialty=نساء وتوليد" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-hearts" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566ZM9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">نساء وتوليد</h6>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Specialty 6 -->
+            <div class="col">
+                <a href="/Listing?specialty=عيون" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-secondary bg-opacity-10 text-secondary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">عيون</h6>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Specialty 7 -->
+            <div class="col">
+                <a href="/Listing?specialty=تغذية" class="text-decoration-none specialty-link">
+                    <div class="card border-0 shadow-sm rounded-4 specialty-card h-100 text-center p-3">
+                        <div class="icon-wrapper bg-dark bg-opacity-10 text-dark rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; transition: all 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                              <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"/>
+                            </svg>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-0">تغذية</h6>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- DOCTORS SECTION -->
+<div class="row justify-content-center g-4 my-5" id="book-doctor">
+    <div class="col-12 col-xl-11">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h2 class="fw-bold mb-0 text-primary">احجز مع أفضل الأطباء</h2>
+            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle rounded-pill px-3 py-2 fw-semibold fs-6">@Model.Doctors.Count() أطباء متاحين</span>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <partial name="_SidebarFilter" />
+            </div>
+            
+            <!-- Doctor List -->
+            <div class="col-lg-9" id="doctors-list">
+                <partial name="_DoctorListPartial" model="Model.Doctors" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/doctors.js" asp-append-version="true"></script>
