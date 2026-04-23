@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(90deg, #00b8a9 0%, #009688 100%);">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" asp-controller="Home" asp-action="Index">
             <span
@@ -14,6 +14,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link fw-semibold" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold text-warning" asp-controller="Home" asp-action="Listing">احجز طبيب</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-semibold" asp-controller="Specialties" asp-action="Index">Specialties</a>

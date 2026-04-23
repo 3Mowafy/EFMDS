@@ -1,0 +1,38 @@
+@model EFMDS.Web.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "قائمة الأطباء";
+}
+
+<div class="row justify-content-center g-4 my-4">
+    <div class="col-12 col-xl-11">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-primary">الرئيسية</a></li>
+                <li class="breadcrumb-item active" aria-current="page">الأطباء</li>
+            </ol>
+        </nav>
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h2 class="fw-bold mb-0 text-primary">احجز مع أفضل الأطباء</h2>
+            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle rounded-pill px-3 py-2 fw-semibold fs-6">@Model.Doctors.Count() أطباء متاحين</span>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <partial name="_SidebarFilter" />
+            </div>
+            
+            <!-- Doctor List -->
+            <div class="col-lg-9" id="doctors-list">
+                <partial name="_DoctorListPartial" model="Model.Doctors" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/doctors.js" asp-append-version="true"></script>
+}
